@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+<div class="container d-flex">
+  <div class="input-group flex-nowrap mt-3 me-2">
+    <span class="input-group-text" id="addon-wrapping"
+      ><i class="fa-solid fa-magnifying-glass"></i
+    ></span>
+    <input
+      name="firstName"
+      type="text"
+      class="form-control"
+      placeholder="First Name"
+      aria-label="Username"
+      aria-describedby="addon-wrapping"
+      [(ngModel)]="firstName"
+    />
+  </div>
+  <div class="input-group flex-nowrap mt-3 me-2">
+    <span class="input-group-text" id="addon-wrapping"
+      ><i class="fa-solid fa-magnifying-glass"></i
+    ></span>
+    <input
+      name="lastName"
+      type="text"
+      class="form-control"
+      placeholder="Last Name"
+      aria-label="Username"
+      aria-describedby="addon-wrapping"
+      [(ngModel)]="lastName"
+    />
+  </div>
+  <div class="input-group flex-nowrap mt-3 me-2">
+    <span class="input-group-text" id="addon-wrapping"
+      ><i class="fa-solid fa-magnifying-glass"></i
+    ></span>
+    <input
+      name="phone"
+      type="text"
+      class="form-control"
+      placeholder="Phone"
+      aria-label="Username"
+      aria-describedby="addon-wrapping"
+      [(ngModel)]="phone"
+    />
+  </div>
+  <div class="col-12 col-md-auto mt-3">
+    <button (click)="addForm()" class="btn btn-dark w-100">
+      <a> <i class="fa-solid fa-plus"></i>Add Customer </a>
+    </button>
+  </div>
+</div>
+
+<div class="container mt-2">
+  <table class="table text-center bg-light">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col" colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let c of customers
+            | filter : firstName : 'firstName'
+            | filter : lastName : 'lastName'
+            | filter : phone : 'phone';
+          index as i
+        "
+      >
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ c.firstName }}</td>
+        <td>{{ c.lastName }}</td>
+        <td>{{ c.phone }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.address }}</td>
+        <td>
+          <a (click)="editForm(c)" role="button">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </a>
+        </td>
+        <td>
+          <a (click)="showForm(c)" role="button">
+            <i class="fa-regular fa-eye"></i>
+          </a>
+        </td>
+        <td>
+          <a (click)="deleteCustomer(c)" role="button">
+            <i class="fa-regular fa-trash-can"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crmproject-37b24": {
+      "hosting": {
+        "crmProject": [
+          "crmproject-37b24"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crmproject-37b24"
+  }
+}
